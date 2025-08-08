@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About JJ Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            height: 60px;
+            background-color: #e63946;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 99;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #e63946;
+        }
+        
+        /* Main Content */
+        .about-content {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #e63946;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        
+        .restaurant-intro {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .restaurant-intro p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .restaurant-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Owners Section */
+        .owners-title {
+            color: #e63946;
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 2rem;
+        }
+        
+        .owners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .owner-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .owner-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .owner-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid #e63946;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .owner-name {
+            color: #e63946;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .owner-position {
+            color: #777;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .owner-bio {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 15px;
+                margin-top: 80px;
+            }
+            
+            .owners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .owner-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo">JJ</div>
+    
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="About.html">About</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- About Content -->
+    <div class="about-content">
+        <h1>Our Story</h1>
+        
+        <div class="restaurant-intro">
+            <p>
+                Welcome to <strong>JJ Restaurant</strong> – where flavors meet tradition. Located in the heart of the city, we serve a curated selection of Indian, Chinese, and Continental cuisines made from the freshest ingredients.
+            </p>
+            <p>
+                At <strong>JJ Restaurant</strong>, we believe in quality, hospitality, and creating a warm, memorable dining experience for every guest. Whether you're here for a family dinner or a casual lunch with friends, we promise delicious food and excellent service.
+            </p>
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="JJ Restaurant Interior" class="restaurant-image">
+        </div>
+        
+        <h2 class="owners-title">Meet Our Founders</h2>
+        
+        <div class="owners-grid">
+            <div class="owner-card">
+                <img src="C:\Users\Aman jha\Downloads\restaurent website\aman.jpg" alt="Aman Jha" class="owner-image">
+                <h3 class="owner-name">Aman Jha</h3>
+                <p class="owner-position">Co-founder & Head Chef</p>
+                <p class="owner-bio">
+                    With over 15 years of culinary expertise, Aman brings authentic flavors and innovative techniques to JJ Restaurant. His mastery of both traditional and contemporary cooking methods ensures every dish is a masterpiece.
+                </p>
+            </div>
+            
+            <div class="owner-card">
+                <img src="C:\Users\Aman jha\Downloads\restaurent website\shubham .jpg" alt="Shubham Jha" class="owner-image">
+                <h3 class="owner-name">Shubham Jha</h3>
+                <p class="owner-position">Co-founder & Operations Director</p>
+                <p class="owner-bio">
+                    Shubham's exceptional management skills and dedication to customer satisfaction create the welcoming atmosphere JJ Restaurant is known for. He oversees all operations to ensure flawless service.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>JJ Restaurant • collaba street,mumbai -400006 • Open 11am-11pm Daily</p>
+        <p>© 2023 JJ Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

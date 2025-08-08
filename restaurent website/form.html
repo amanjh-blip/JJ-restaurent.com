@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ Restaurant - Order Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .order-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #e63946;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .menu-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid #e63946;
+        }
+        
+        .menu-section h2 {
+            color: #e63946;
+            margin-bottom: 15px;
+        }
+        
+        .delivery-time {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .delivery-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .delivery-option input {
+            margin-right: 8px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .submit-btn {
+            background: #e63946;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #c1121f;
+            transform: scale(1.05);
+        }
+        
+        .home-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .home-btn:hover {
+            background: #555;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .order-form {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .delivery-time {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .submit-btn, .home-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="order-form">
+            <h1>JJ Restaurant Order Form</h1>
+            
+            <form id="restaurantOrderForm">
+                <!-- Customer Information -->
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Delivery Address:</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+                
+                <!-- Starters Selection -->
+                <div class="menu-section">
+                    <h2>Starters (Select 2)</h2>
+                    
+                    <div class="form-group">
+                        <label for="starter1">Starter 1:</label>
+                        <select id="starter1" name="starter1" required>
+                            <option value="">-- Select a starter --</option>
+                            <option value="Fresh Garden Salad">Fresh Garden Salad (₹180)</option>
+                            <option value="Hot & Sour Soup">Hot & Sour Soup (₹150)</option>
+                            <option value="Paneer Chilli">Paneer Chilli (₹220)</option>
+                            <option value="Veg Manchurian">Veg Manchurian (₹200)</option>
+                            <option value="Masala Papad">Masala Papad (₹90)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="starter2">Starter 2:</label>
+                        <select id="starter2" name="starter2" required>
+                            <option value="">-- Select a starter --</option>
+                            <option value="Fresh Garden Salad">Fresh Garden Salad (₹180)</option>
+                            <option value="Hot & Sour Soup">Hot & Sour Soup (₹150)</option>
+                            <option value="Paneer Chilli">Paneer Chilli (₹220)</option>
+                            <option value="Veg Manchurian">Veg Manchurian (₹200)</option>
+                            <option value="Masala Papad">Masala Papad (₹90)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Main Course Selection -->
+                <div class="menu-section">
+                    <h2>Main Course (Select 2)</h2>
+                    
+                    <div class="form-group">
+                        <label for="main1">Main Course 1:</label>
+                        <select id="main1" name="main1" required>
+                            <option value="">-- Select a main course --</option>
+                            <option value="Butter Chicken">Butter Chicken (₹320)</option>
+                            <option value="Dal Makhni">Dal Makhni (₹250)</option>
+                            <option value="Paneer Butter Masala">Paneer Butter Masala (₹280)</option>
+                            <option value="Hyderabadi Biryani">Hyderabadi Biryani (₹350)</option>
+                            <option value="Palak Paneer">Palak Paneer (₹260)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="main2">Main Course 2:</label>
+                        <select id="main2" name="main2" required>
+                            <option value="">-- Select a main course --</option>
+                            <option value="Butter Chicken">Butter Chicken (₹320)</option>
+                            <option value="Dal Makhni">Dal Makhni (₹250)</option>
+                            <option value="Paneer Butter Masala">Paneer Butter Masala (₹280)</option>
+                            <option value="Hyderabadi Biryani">Hyderabadi Biryani (₹350)</option>
+                            <option value="Palak Paneer">Palak Paneer (₹260)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Desserts Selection -->
+                <div class="menu-section">
+                    <h2>Dessert (Select 1)</h2>.
+                    
+                    <div class="form-group">
+                        <label for="dessert">Dessert:</label>
+                        <select id="dessert" name="dessert" required>
+                            <option value="">-- Select a dessert --</option>
+                            <option value="Gulab Jamun">Gulab Jamun (₹120)</option>
+                            <option value="Rasmalai">Rasmalai (₹140)</option>
+                            <option value="Rice Kheer">Rice Kheer (₹110)</option>
+                            <option value="Jalebi">Jalebi (₹100)</option>
+                            <option value="Gajar Halwa">Gajar Halwa (₹130)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Delivery Time -->
+                <div class="form-group">
+                    <h3>Preferred Delivery Time:</h3>
+                    <div class="delivery-time">
+                        <div class="delivery-option">
+                            <input type="radio" id="time30" name="deliveryTime" value="30 minutes" required>
+                            <label for="time30">30 minutes</label>
+                        </div>
+                        <div class="delivery-option">
+                            <input type="radio" id="time45" name="deliveryTime" value="45 minutes">
+                            <label for="time45">45 minutes</label>
+                        </div>
+                        <div class="delivery-option">
+                            <input type="radio" id="time60" name="deliveryTime" value="1 hour">
+                            <label for="time60">1 hour</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="buttons-container">
+                    <button type="submit" class="submit-btn">Place Order</button>
+                    <a href="C:\Users\Aman jha\Downloads\restaurent website\home.html" class="home-btn">Back to Home</a>
+                    <a href="menu.html" class="menu-btn">menu</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('restaurantOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const deliveryTime = document.querySelector('input[name="deliveryTime"]:checked').value;
+            
+            // Show confirmation
+            alert(`Order confirmed, ${name}!\n\nWe'll deliver your food in ${deliveryTime}.\n\nContact: ${phone}\n\nThank you for ordering from JJ Restaurant!`);
+            
+            // In a real application, you would send this data to a server
+            // this.submit();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ Restaurant - Creative Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: 70px;
+            background-color: #e63946;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #e63946;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #e63946;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Menu Container */
+        .menu-container {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+        
+        /* Menu Header */
+        .menu-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .menu-header h1 {
+            font-size: 3.5rem;
+            color: #e63946;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .menu-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Menu Sections */
+        .menu-section {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: #e63946;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px dashed #e63946;
+            display: inline-block;
+        }
+        
+        /* Menu Items Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .item-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-item:hover .item-image img {
+            transform: scale(1.05);
+        }
+        
+        .item-details {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .item-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e63946;
+            background: rgba(230, 57, 70, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        
+        .item-desc {
+            color: #666;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        /* Order Now Section */
+        .order-section {
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+        
+        .order-btn {
+            background: #e63946;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .order-btn:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: #e63946;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo">JJ</div>
+    
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="About.html">About</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Menu Container -->
+    <div class="menu-container">
+        <!-- Menu Header -->
+        <div class="menu-header">
+            <h1>Our Culinary Journey</h1>
+            <p>Experience the authentic flavors crafted with passion and tradition</p>
+        </div>
+        
+        <!-- Starters Section -->
+        <div class="menu-section">
+            <h2 class="section-title">Starters</h2>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\fresh green salad.webp" alt="Fresh Salad">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Fresh Garden Salad</div>
+                            <div class="item-price">₹180</div>
+                        </div>
+                        <p class="item-desc">Crisp seasonal vegetables with our signature lemon dressing and herb croutons</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\hot-and-sour-soup.jpg" alt="Hot & Sour Soup">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Hot & Sour Soup</div>
+                            <div class="item-price">₹150</div>
+                        </div>
+                        <p class="item-desc">Spicy and tangy vegetable soup with tofu and mushrooms</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\paneer chilli.webp" alt="Paneer Chilli">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Paneer Chilli</div>
+                            <div class="item-price">₹220</div>
+                        </div>
+                        <p class="item-desc">Crispy cottage cheese cubes tossed in spicy schezwan sauce with bell peppers</p>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\Manchurian.jpeg" alt="Veg Manchurian">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Veg Manchurian</div>
+                            <div class="item-price">₹200</div>
+                        </div>
+                        <p class="item-desc">Fried vegetable balls in a tangy and spicy Indo-Chinese sauce</p>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\masala papad.jpeg" alt="Masala Papad">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Masala Papad</div>
+                            <div class="item-price">₹90</div>
+                        </div>
+                        <p class="item-desc">Crispy lentil wafers topped with finely chopped onions, tomatoes and spices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Course Section -->
+        <div class="menu-section">
+            <h2 class="section-title">Main Course</h2>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\butter chicken.jpeg" alt="Butter Chicken">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Butter Chicken</div>
+                            <div class="item-price">₹320</div>
+                        </div>
+                        <p class="item-desc">Tender chicken pieces in rich tomato and butter gravy, served with butter naan</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\dal makhni.jpeg" alt="Dal Makhani">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Dal Makhani</div>
+                            <div class="item-price">₹250</div>
+                        </div>
+                        <p class="item-desc">Slow-cooked black lentils with butter and cream, simmered overnight</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\butter paneer.jpeg" alt="Paneer Butter Masala">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Paneer Butter Masala</div>
+                            <div class="item-price">₹280</div>
+                        </div>
+                        <p class="item-desc">Soft paneer cubes in creamy tomato gravy with aromatic spices</p>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\biryani.jpeg" alt="Hyderabadi Biryani">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Hyderabadi Biryani</div>
+                            <div class="item-price">₹350</div>
+                        </div>
+                        <p class="item-desc">Fragrant basmati rice layered with marinated chicken and aromatic spices</p>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\palak paneer.jpeg" alt="Palak Paneer">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Palak Paneer</div>
+                            <div class="item-price">₹260</div>
+                        </div>
+                        <p class="item-desc">Soft paneer cubes in creamy spinach gravy with Indian spices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desserts Section -->
+        <div class="menu-section">
+            <h2 class="section-title">Sweet Endings</h2>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\gulab jamun.jpeg" alt="Gulab Jamun">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Gulab Jamun</div>
+                            <div class="item-price">₹120</div>
+                        </div>
+                        <p class="item-desc">Soft milk dumplings soaked in rose-scented sugar syrup, served warm</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\rasmalai.jpeg" alt="Rasmalai">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Rasmalai</div>
+                            <div class="item-price">₹140</div>
+                        </div>
+                        <p class="item-desc">Soft cottage cheese patties in sweetened, flavored milk with pistachios</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\kheer.jpeg" alt="Kheer">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Rice Kheer</div>
+                            <div class="item-price">₹110</div>
+                        </div>
+                        <p class="item-desc">Traditional rice pudding cooked with milk, sugar, and cardamom, garnished with nuts</p>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\jalebi.webp" alt="Jalebi">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Jalebi</div>
+                            <div class="item-price">₹100</div>
+                        </div>
+                        <p class="item-desc">Crispy swirls of fermented batter deep-fried and soaked in sugar syrup</p>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="C:\Users\Aman jha\Downloads\restaurent website\halwa.jpeg" alt="Gajar Halwa">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <div class="item-name">Gajar Halwa</div>
+                            <div class="item-price">₹130</div>
+                        </div>
+                        <p class="item-desc">Traditional carrot pudding cooked with milk, ghee and dry fruits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order Now Button -->
+        <div class="order-section">
+            <button class="order-btn">
+                <i class="fas fa-utensils"></i> Order Now
+            </button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Monday - Friday: 11am - 10pm</p>
+                <p>Saturday - Sunday: 10am - 11pm</p>
+            </div>
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p>colaba street </p>
+                <p>mumbai 400006</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 JJ Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    // Order Now button functionality
+    document.querySelector('.order-btn').addEventListener('click', function() {
+        alert('Your order has been placed! We will contact you shortly to confirm.');
+        // Redirect to home page after 2 seconds (2000 milliseconds)
+        setTimeout(function() {
+            window.location.href ="home.html"
+        }, 2000);
+    });
+</script>
+</body>
+</html>
